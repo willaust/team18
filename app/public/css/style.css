@@ -27,3 +27,13 @@
     display:inline-block;
     width:auto
   }
+
+h1
+{
+  padding: 10px;
+}
+
+h3
+{
+  text-align: center;
+}

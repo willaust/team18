@@ -22,7 +22,7 @@
 
   <h1>
 
-    <div class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">Referee List
+    <div class = "col-lg-12 col-md-6 col-sm-7 col-xs-7"> Game Details
     </div>
 
 
@@ -49,25 +49,26 @@
       <thead>
        <tr class="change2">
       <th class = "text-center"> Name </th>
-       <th class = "text-center"> Age </th>
-       <th class = "text-center"> Referee Grade </th>
+       <th class = "text-center"> Date </th>
+       <th class = "text-center"> Referee </th>
+       <th class = "text-center"> Status </th>
 
        </tr>
       </thead>
        <br>
       <tbody>
         <tr v-for="book in books">
-                      <td> <a href = "referee ">Referee 1 </a></td><td> <a> 28 </a></td> <td> <a> 5 </a></td>
+                      <td> Game 1 </td><td> <a> 28/2/22 </a></td> <td> <a> Referee 1, Referee 2 </a></td> <td> <a> Assigned, Tentative </a></td>
                       <!-- <td>{{ book.Author }}</td> -->
                       <!-- <td>{{ book.Year_Published }}</td> -->
       </tr>
       <tr v-for="book in books">
-                    <td> <a href = "">Referee 2 </a></td><td> <a> 34 </a></td> <td> <a> 10 </a></td>
+                    <td> Game 2</td><td> <a> 14/7/22 </a></td> <td> <a> Referee 2 </a></td> <td> <a> Assigned </a></td>
                     <!-- <td>{{ book.Author }}</td> -->
                     <!-- <td>{{ book.Year_Published }}</td> -->
     </tr>
     <tr v-for="book in books">
-                  <td> <a href = "" >Referee 3 </a></td><td> <a> 40 </a></td> <td> <a> 7 </a></td>
+                <td> Game 3 </td><td> <a> 4/4/22 </a></td> <td> <a> - </a></td> <td> <a> Unassigned </a></td>
                   <!-- <td>{{ book.Author }}</td> -->
                   <!-- <td>{{ book.Year_Published }}</td> -->
   </tr>
