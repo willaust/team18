@@ -1,0 +1,4 @@
+MYSQL_DATABASE=database name
+MYSQL_HOST=host address
+MYSQL_USER=username
+MYSQL_PASSWORD=password
