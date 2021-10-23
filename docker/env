@@ -1,4 +1,4 @@
-MYSQL_DATABASE=database name
-MYSQL_HOST=host address
-MYSQL_USER=username
-MYSQL_PASSWORD=password
+MYSQL_DATABASE=msisdb
+MYSQL_HOST=dbserver1.ceed1zeb5iu4.us-east-2.rds.amazonaws.com
+MYSQL_USER=msisadmin
+MYSQL_PASSWORD=DB69123!

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
@@ -32,7 +33,7 @@
 
     <nav class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">
       <a href = "index.html">Home    |</a>
-      <a href = "referee.html">Referee Details    |</a>
+      <a href = "admin-referee.html">Referee Details    |</a>
       <a href = "game.html">Game details    |</a>
     </nav>
 
@@ -42,56 +43,58 @@
 
 
   </header>
+  
 <main class = "row">
 
 <div class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">
-<table id = "new_table" class = "table table-bordered table-striped table-hover table-condensed">
-      <thead>
-       <tr class="change2">
-      <th class = "text-center"> Name </th>
-       <th class = "text-center"> Age </th>
-       <th class = "text-center"> Referee Grade </th>
+    <form name="frm" action="" method="POST" onsubmit="return validate()">
+      
+      
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input  type="text" placeholder="Enter Username" name="uname" required>
+      
+          <label for="psw"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" id = "psw" required>
+      
+          <button type="submit" >Login </button>
+          <!-- Login</button> -->
+          
+        </div>
+      
+        <div class="container" style="background-color:#f1f1f1">
+          
+          <span class="psw">Forgot <a href="#" data-toggle="modal" data-target = "#oops">password?</a></span>
+        </div>
+      </form>
 
-       </tr>
-      </thead>
-       <br>
-      <tbody>
-        <tr v-for="book in books">
-                      <td> <a href = "referee ">Referee 1 </a></td><td> <a> 28 </a></td> <td> <a> 5 </a></td>
-                      <!-- <td>{{ book.Author }}</td> -->
-                      <!-- <td>{{ book.Year_Published }}</td> -->
-      </tr>
-      <tr v-for="book in books">
-                    <td> <a href = "">Referee 2 </a></td><td> <a> 34 </a></td> <td> <a> 10 </a></td>
-                    <!-- <td>{{ book.Author }}</td> -->
-                    <!-- <td>{{ book.Year_Published }}</td> -->
-    </tr>
-    <tr v-for="book in books">
-                  <td> <a href = "" >Referee 3 </a></td><td> <a> 40 </a></td> <td> <a> 7 </a></td>
-                  <!-- <td>{{ book.Author }}</td> -->
-                  <!-- <td>{{ book.Year_Published }}</td> -->
-  </tr>
-      </tbody>
-
-  </table>
-
-
-   <button type="button" class="btn btn-lg btn-primary" style="background-color: #e6baba; color: Black; margin: 10px;" >Refresh</button>
 </div>
 </main>
+<div class = "modal" id = "oops">
+    <div class = "modal-dialog">
+        <div class = "modal-content">
+            <div class = "modal-header">
+                <h2 class = "modal-title">Uh Oh!</h2>
+                
+            </div>
+            <div class = "modal-body">
+                <p>Contact Professor Tom Gregory for login.</p>
+                <p> Password: 12345</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer class = "rows" style="background-color: #e6baba">
 
 |Phone: 800-555-1234 | 444 Trafalgar Sqaure, Mexico, 432107
 </footer>
-<!-- <script src='js/tablesort.min.js'></script>
-<script src='js/tablesort.date.js'></script> -->
 <!-- <script>
 new Tablesort(document.getElementById('new_table'));
 </script> -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
-<script src="js/books.js"></script>
+<script src="js/login.js"></script>
 </body>
 
 </html>
