@@ -58,7 +58,7 @@ const ReffApp = {
             },
             postEditReff(evt) {
                 // this.offerForm.studentId = this.selectedStudent.id;
-                this.reffForm.id = this.reffs.id;       
+                this.reffForm.id = this.selectedReff.id;       
                 
                 console.log("Updating!", this.reffForm);
         

@@ -57,7 +57,7 @@ const GameApp = {
             },
             postEditGame(evt) {
                 // this.offerForm.studentId = this.selectedStudent.id;
-                this.gameForm.id = this.games.id;       
+                this.gameForm.id = this.selectedGame.id;       
                 
                 console.log("Updating!", this.gameForm);
         

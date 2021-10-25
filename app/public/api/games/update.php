@@ -32,7 +32,7 @@ $db = DbConnection::getConnection();
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
     'UPDATE games SET
-      gfield = ?,
+      gfield = ?
       -- FIXXXX
       -- gdate = ?,
       -- gtime = ?
@@ -40,11 +40,11 @@ $stmt = $db->prepare(
   );
 
 $stmt->execute([
-  $_POST['gfield']
+  $_POST['gfield'],
   // FIXXX
   // $_POST['gdate'],
-  // $_POST['gtime']
-//   $_POST['id']
+  // $_POST['gtime'],
+  $_POST['id']
 ]);
 
 // Get auto-generated PK from DB
@@ -55,5 +55,5 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 
-hheader('HTTP/1.1 303 See Other');
+header('HTTP/1.1 303 See Other');
 header('Location: ../games/');

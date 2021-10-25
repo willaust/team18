@@ -38,12 +38,15 @@ $stmt = $db->prepare(
     WHERE id = ?'
   );
 
-$stmt->execute([
-  $_POST['rname'],
+$stmt->execute([ 
+  $_POST['rname'], 
   $_POST['age'],
-  $_POST['score']
-//   $_POST['id']
-]);
+  $_POST['score'],
+  $_POST['id'] 
+  ] );
+
+
+
 
 // Get auto-generated PK from DB
 // https://www.php.net/manual/en/pdo.lastinsertid.php
@@ -53,5 +56,5 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 
-hheader('HTTP/1.1 303 See Other');
+header('HTTP/1.1 303 See Other');
 header('Location: ../reffs/');
