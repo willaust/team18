@@ -59,7 +59,7 @@ const GameApp = {
                 // this.offerForm.studentId = this.selectedStudent.id;
                 this.gameForm.id = this.selectedGame.id;       
                 
-                console.log("Updating!", this.gameForm);
+                console.log("Updating! hello", this.gameForm);
         
                 fetch('api/games/update.php', {
                     method:'POST',
