@@ -42,7 +42,7 @@
       <table id = "new_table" class = "table table-bordered table-striped table-hover table-condensed">
           <thead>
             <tr class="change2">
-              <th class = "text-center"> Name </th>
+              <th class = "text-center"> User Name </th>
               <th class = "text-center"> Age </th>
               <th class = "text-center"> Referee Grade </th>
             </tr>
@@ -50,7 +50,7 @@
           <br>
           <tbody>
             <tr v-for="reff in reffs">
-              <td>{{ reff.rname }}</td>
+              <td><a href= "referee-info.html">{{ reff.rname }}</a></td>
               <td>{{ reff.age }}</td>
               <td>{{ reff.score }}</td>
             </tr>

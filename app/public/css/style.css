@@ -107,3 +107,19 @@ span.psw {
     width: 100%;
   }
 }
+#button{
+  color:#000!important;
+  background-color:#f1f1f1!important; 
+  display:block;width:100%;
+  border:none;
+  display:inline-block;
+  padding:8px 16px;
+  vertical-align:middle;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  background-color:inherit;
+  text-align:center;
+  cursor:pointer;
+  white-space:nowrap
+}
