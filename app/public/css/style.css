@@ -123,3 +123,11 @@ span.psw {
   cursor:pointer;
   white-space:nowrap
 }
+
+.navbar-nav{
+  font-size: large  ;
+}
+
+.footer{
+  font-size: large  ;
+}

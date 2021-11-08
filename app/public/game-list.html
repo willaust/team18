@@ -20,26 +20,31 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
   </head>
 
-<body class = "container">
+<body>
   <header>
-
-    <h1>
-      <div class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">Game List
+  <!-- NAV BAR-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="http://www.indianareferees.org/">Indiana Soccer Referees Association</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <!-- MAKE SURE TO USE CURRENT TAG FOR CURRENT PAGE ACROSS PAGES-->
+          <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="#">Features</a>
+          <a class="nav-item nav-link" href="#">Pricing</a>
+          <a class="nav-item nav-link disabled" href="#">Disabled</a>
+        </div>
       </div>
-    </h1>
-
-
-    <nav class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">
-      <a href = "referee-list.html">Home    |</a>
-      <a href = "referee-details.html">Referee Details    |</a>
-      <a href = "game.html">Game details    |</a>
     </nav>
-
+  <!-- END NAV BAR-->
   </header>
+
   <main class = "row">
 
     <div id = "gameApp" class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">
-      <table id = "new_table" class = "table table-bordered table-striped table-hover table-condensed">
+      <table id = "new_table" class = "table table-bordered table-striped table-hover table-condensed container">
           <thead>
             <tr class="change2">
               <th class = "text-center"> Field </th>
@@ -60,10 +65,17 @@
     <button type="button" class="btn btn-lg btn-primary" style="background-color: #e6baba; color: Black; margin: 10px;" >Refresh</button>
   </main>
 
-<footer class = "rows" style="background-color: #e6baba">
-
-|Phone: 800-555-1234 | 444 Trafalgar Sqaure, Mexico, 432107
+<!-- Footer: https://mdbootstrap.com/docs/b4/jquery/navigation/footer/ -->
+<footer class="bg-light text-center text-lg-start footer">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-dark" href="https://lizcraig0.wixsite.com/website-4">MSIS Team 18</a>
+  </div>
+  <!-- Copyright -->
 </footer>
+<!-- END FOOTER-->
+
 <script src="js/games.js"></script>
 </body>
 
