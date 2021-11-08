@@ -44,6 +44,7 @@
       </nav>
     <!-- END NAV BAR-->
     </header>
+    
 <main class = "row">
   <div class ="welcome"><p> Hello,  <span id ="aname"></span></div>
     <div id = "reffGameApp" class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">
@@ -116,7 +117,7 @@
             <button type="submit" class="btn btn-primary">{{ selectedGameA === null ? "Add" : "Edit" }} Game Assignment</button>
             <button type="button" class="btn btn-outline-secondary" v-if="selectedGameA" v-on:click="resetGameAForm">Cancel</button>
       </div>
-      
+
 </main>
 
 <footer class="bg-light text-center text-lg-start footer container">

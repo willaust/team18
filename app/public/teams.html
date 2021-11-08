@@ -35,7 +35,7 @@
             <a> | </a>
             <a class="nav-item nav-link" href="/admin-ref-game.html">Game Assignment</a>
             <a> | </a>
-            <a class="nav-item nav-link active" href="/admin-referee-list.html">Referree List</a>
+            <a class="nav-item nav-link active" href="/admin-referee-list.html">Referee List</a>
 
           </div>
         </div>
@@ -106,6 +106,11 @@
                 <button type="submit" class="btn btn-primary">{{ selectedTeam === null ? "Add" : "Edit" }} Team</button>
                 <button type="button" class="btn btn-outline-secondary" v-if="selectedTeam" v-on:click="resetTeamForm">Cancel</button>
             </form>
+            <div>
+              <form method="get" action="/games-unassigned-report.html">
+                <button type="submit" class="btn btn-outline-secondary" style="background-color: blue; color: white">Unassigned Referees</button>
+              </form>
+            </div>
         </div>
     </div>
     <div>
