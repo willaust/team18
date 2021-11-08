@@ -95,11 +95,11 @@
               <div class="mb-3">
                 <label for="gname" class="form-label">Game Name</label>
                 <input type="text" v-model="gameForm.gname"
-                class="form-control" id="gname">
+                class="form-control" id="gname" required="required">
                 <div class="mb-3">
                     <label for="gfield" class="form-label">Field</label>
                     <input type="text" v-model="gameForm.gfield"
-                    class="form-control" id="gfield"> 
+                    class="form-control" id="gfield" required="required"> 
                 </div>
                 <!-- FIX -->
                <div class="mb-3">
@@ -111,7 +111,7 @@
                     <label for="gtime" class="form-label">Time</label> 
                     <!-- <input type="time" v-model="gameForm.gtime" class="form-control" id="gtime"> --> 
                     <input type="text" v-model="gameForm.gtime"
-                    class="form-control" id="gtime"> 
+                    class="form-control" id="gtime" required="required"> 
                 </div>
                 <div class="mb-3">
                   <label for="hteam" class="form-label">Home Team</label>

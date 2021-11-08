@@ -92,7 +92,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="author" class="form-label">Age</label>
-                    <input type="number" v-model="reffForm.age" class="form-control" id="age">
+                    <input type="number" v-model="reffForm.age" class="form-control" id="age" required="required">
                 </div>
                 <div class="mb-3">
                   <label for="grade" class="form-label">Referee Grade</label>
@@ -114,7 +114,7 @@
               </div>
                 <div class="mb-3">
                     <label for="score" class="form-label">Referee Skill</label>
-                    <input type="number" v-model="reffForm.score" class="form-control" id="score">
+                    <input type="number" v-model="reffForm.score" class="form-control" id="score" min='0' max="100" required="required">
                 </div>
                 <button type="submit" class="btn btn-primary">{{ selectedReff === null ? "Add" : "Edit" }} Referee</button>
                 <button type="button" class="btn btn-outline-secondary" v-if="selectedReff" v-on:click="resetReffForm">Cancel</button>
