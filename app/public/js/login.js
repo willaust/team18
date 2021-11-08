@@ -5,7 +5,7 @@ function validate() {
 	if(digits == '12345')
 	{
 		//Why not goin here now??
-		location.href = 'admin-referee-list.html';
+		location.href = 'admin-game-list.html';
 	}
 	//Something fun..... idk
 	else if (digits == '567')
