@@ -43,7 +43,6 @@
 
   </header>
 <main class = "row">
-    <p> Hello <span id ="aname"></span></p>
     <div id = "reffGameApp" class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">
         <table id = "new_table" class = "table table-bordered table-striped table-hover table-condensed">
             <thead>
@@ -52,7 +51,6 @@
                 <th class = "text-center">  Game level </th>
                 <th class = "text-center">  Referee  </th>
                 <th class = "text-center">  Status </th>
-                <th class = "text-center">  EDIT/DELETE </th>
               </tr>
             </thead>
             <br>
@@ -68,50 +66,10 @@
                 <!-- check this  -->
                  
                 <td>{{ g.stat }}</td>
-                <td>
-                    <button type="button" class="btn btn-outline-secondary btn-sm"
-                      v-on:click="selectGameA(g)">Edit</button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm"
-                      v-on:click="postDeleteGameA(g)">Delete</button>
-                  </td>
               </tr>
             </tbody>
         </table>
-        <h3>{{ selectedGameA === null ? "Add" : "Edit" }} Game Assignment</h3> 
-        <div class="col col-8">
-            <form v-on:submit.prevent="postGameA">
-                <div class="mb-3">
-                    <label for="gameId" class="form-label">Game</label>
-                    <select  class="form-select" v-model="gameAForm.gameId" id="gameId" required="required" >
-                      <option v-for="game in games":value='game.gfield' >{{ game.gfield }} - {{ prettyData(game.gdate) }} - {{game.gtime}}</option>
-                    </select> 
-                </div>
-                <div class="mb-3">
-                  <label for="glevel" class="form-label">Level</label>
-                  <select v-model="gameAForm.glevel" class="form-select" id="glevel" >
-                    <option value="low-level">low-level</option>
-                    <option value="normal-level">normal-level</option>
-                    <option value="high-level">high-level</option>
-                  </select> 
-              </div>  
-              <div   class="mb-3" >
-                <label for="ref" class="form-label">Referee 1</label>
-                    <select class="form-select" v-model="gameAForm.ref" id="ref" required="required"> 
-                      <option v-for="r in reffs":value='r.rname' >{{ r.rname }}</option>
-                    </select>
-            </div>
-            <div class="mb-3">
-                <label for="stat" class="form-label">Referee Status</label>
-                <select v-model="gameAForm.stat" class="form-select" id="stat" required="required">
-                    <option value="Unassigned">Unassigned</option>
-                    <option value="Assigned">Assigned</option>
-                    <option value="Tentative">Tentative</option>
-                    <option value="Accepted">Accepted</option>
-                  </select> 
-            </div>
-            
-            <button type="submit" class="btn btn-primary">{{ selectedGameA === null ? "Add" : "Edit" }} Game Assignment</button>
-            <button type="button" class="btn btn-outline-secondary" v-if="selectedGameA" v-on:click="resetGameAForm">Cancel</button>
+        
       </div>
 </main>
 
@@ -123,7 +81,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
 <script src="js/ref-games.js"></script>
-<script src="js/admin.js"></script>
 
 </body>
 
