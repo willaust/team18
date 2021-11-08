@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+   <script src="https://unpkg.com/vue@next"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    
+    <script>dayjs().format()</script>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Referee information</title>
+  
+
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+
+<body>
+  <header>
+
+  <h1>
+    <div class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">
+        Referee information
+    </div>
+  </h1>
+
+
+    <nav class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">
+      <a href = "referee-list.html">Home    |</a>
+      <a href = "referee-details.html">Referee Details    |</a>
+      <a href = "game.html">Game details    |</a>
+    </nav>
+  </header>
+
+  <!-- Random info using JS. -->
+  <div id="app" >
+    <div id="about" class="container padding-32" >
+      <h3 class="-border-bottom border-light-grey padding-16">  Referee Information</h3>
+      <div class = "head">
+        <img v-bind:src="results.picture.large">
+      </div>
+    </div>
+    
+    <ul>
+      <li>
+        <h1>Name: {{ results.name.first }} {{ results.name.last }} </h1>
+      </li>
+      <li>
+        <h1>Gender: {{ results.gender }}  </h1>
+      </li>
+      <li>
+        <h1>Country: {{ results.location.country }}</h1>
+      </li>
+      <li>
+        <h1>Address: {{ results.location.street.number }}  {{ results.location.city }} , {{ results.location.state }} , {{ results.location.postcode }} </a></h1>
+      </li>
+      <li>
+        <h1>Birthday: {{ bday }}</h1>
+      </li>
+      <li>
+        <h1>Age: {{ results.dob.age }}</h1>
+      </li>
+      <li>
+        <h1>Phone: {{ results.phone }}</a></h1>
+      </li>
+      <li>
+        <h1>Email: <a v-bind:href="'mailto:'+results.email">{{ results.email }}</a></h1>
+      </li>
+    </ul>
+     
+    <div class="col l3 m6 margin-bottom">
+      <p><a class="button" v-bind:href="'mailto:'+results.email">Contact</a></p>
+    </div>
+  </div>
+<script src="js/rand.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</main>
+
+<!-- Footer: https://mdbootstrap.com/docs/b4/jquery/navigation/footer/ -->
+<footer class="bg-light text-center text-lg-start footer container">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2020 Copyright:
+    <a class="text-dark" href="https://lizcraig0.wixsite.com/website-4">MSIS Team 18</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+<!-- END FOOTER-->
+
+
+</html>
+
+<!-- #button{
+    color:#000!important;
+    background-color:#f1f1f1!important; 
+    display:block;width:100%;
+    border:none;
+    display:inline-block;
+    padding:8px 16px;
+    vertical-align:middle;
+    overflow:hidden;
+    text-decoration:none;
+    color:inherit;
+    background-color:inherit;
+    text-align:center;
+    cursor:pointer;
+    white-space:nowrap
+  } -->
