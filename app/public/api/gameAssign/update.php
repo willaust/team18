@@ -31,33 +31,26 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  // FIXXXX - add teams?
-  'INSERT INTO games (gfield, gdate, gtime)  
-  VALUES (?, ?, ?)' 
-);
-
-// ,glevel,ref1,stat1,ref2,stat2,ref3,stat3,ref4,stat4
+    'UPDATE gameAssign SET
+      gameID = ?,
+      glevel = ?,
+      ref = ?,
+      stat =?
+      -- FIXXXX
+      -- gdate = ?,
+      -- gtime = ?
+    WHERE id = ?'
+  );
 
 $stmt->execute([
-  //$_POST['id'],
-  $_POST['gfield'],
-  $_POST['gdate'],
-  $_POST['gtime'],
-  // $_POST['hteam'],
-  // $_POST['ateam'],
-  // $_POST['glevel'],
-  // $_POST['ref1'],
-  // $_POST['stat1'],
-  // $_POST['ref2'],
-  // $_POST['stat2'],
-  // $_POST['ref3'],
-  // $_POST['stat3'],
-  // $_POST['ref4'],
-  // $_POST['stat4'],
-  //FIXXX
+  $_POST['gameId'],
+  $_POST['glevel'],
+  $_POST['ref'],
+  $_POST['stat'],
+  // FIXXX
   // $_POST['gdate'],
   // $_POST['gtime'],
-
+  $_POST['id']
 ]);
 
 // Get auto-generated PK from DB
@@ -67,5 +60,6 @@ $stmt->execute([
 // Step 4: Output
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
+
 header('HTTP/1.1 303 See Other');
-header('Location: ../games/');
+header('Location: ../gameAssign/');

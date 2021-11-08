@@ -2,6 +2,7 @@ const GameApp = {
     data() {
       return {
         games: [],
+        
         // selectedBook: null, //maybe
         gameForm: {},
         selectedGame: null
@@ -9,6 +10,20 @@ const GameApp = {
     },
     computed: {},
     methods: {
+      prettyData(d) {
+        return dayjs(d)
+        .format('D MMM YYYY')
+      },
+      prettyTime(d) {
+        // dayjs.extend(LocalizedFormat)
+        // return dayjs().format('LT')
+        return dayjs(d)
+        .format('h mm a')
+        // var localizedFormat = require('dayjs/plugin/localizedFormat')
+        // dayjs.extend(localizedFormat)
+
+        // dayjs().format('L LT')  
+      },
         prettyDollar(n) {
             const d = new Intl.NumberFormat("en-US").format(n);
             return "$ " + d;

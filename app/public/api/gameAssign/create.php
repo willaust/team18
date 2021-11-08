@@ -31,23 +31,19 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  // FIXXXX - add teams?
-  'INSERT INTO games (gfield, gdate, gtime)  
-  VALUES (?, ?, ?)' 
+  // FIXXXX
+  'INSERT INTO gameAssign (gameId, glevel, ref, stat)  
+  VALUES (?,?,?,?)' 
 );
 
 // ,glevel,ref1,stat1,ref2,stat2,ref3,stat3,ref4,stat4
 
 $stmt->execute([
   //$_POST['id'],
-  $_POST['gfield'],
-  $_POST['gdate'],
-  $_POST['gtime'],
-  // $_POST['hteam'],
-  // $_POST['ateam'],
-  // $_POST['glevel'],
-  // $_POST['ref1'],
-  // $_POST['stat1'],
+  $_POST['gameId'],
+  $_POST['glevel'],
+  $_POST['ref'],
+  $_POST['stat'],
   // $_POST['ref2'],
   // $_POST['stat2'],
   // $_POST['ref3'],
@@ -68,4 +64,4 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../games/');
+header('Location: ../gameAssign/');

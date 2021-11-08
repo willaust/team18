@@ -34,6 +34,7 @@ $stmt = $db->prepare(
     'UPDATE reffs SET
       rname = ?,
       age = ?,
+      grade = ?,
       score = ?
     WHERE id = ?'
   );
@@ -41,6 +42,7 @@ $stmt = $db->prepare(
 $stmt->execute([ 
   $_POST['rname'], 
   $_POST['age'],
+  $_POST['grade'],
   $_POST['score'],
   $_POST['id'] 
   ] );

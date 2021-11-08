@@ -11,7 +11,14 @@ const reffGameApp = {
         reffs: [],
         reffForm: {},
         offerForm: {},
+<<<<<<< Updated upstream
         selectedReff: null
+=======
+        selectedReff: null,
+        teams: [],
+        teamForm: {},
+        selectedTeam: null
+>>>>>>> Stashed changes
       }
     },
     computed: {},
@@ -57,6 +64,10 @@ const reffGameApp = {
           },
         postNewGameA(evt) {
             //this.bookForm.id = this.selectedBook.id; //not sure about this
+<<<<<<< Updated upstream
+=======
+            // this.gameAForm.gameId = this.games.gtime;
+>>>>>>> Stashed changes
             console.log("Posted!", this.gameAForm); //test to make sure form works  //use cmd+shift+r to make sure
             alert("Post");
 
@@ -126,7 +137,11 @@ const reffGameApp = {
                 this.selectedGameA = o;
                 this.gameAForm = Object.assign({}, this.selectedGameA);
               },
+<<<<<<< Updated upstream
               resetGameForm() {
+=======
+              resetGameAForm() {
+>>>>>>> Stashed changes
                 this.selectedGameA = null;
                 this.gameAForm = {};
               },
@@ -277,7 +292,11 @@ const reffGameApp = {
                         });
                     },
                     postDeleteReff(o) {
+<<<<<<< Updated upstream
                       if (!confirm("Are you sure you want to delete the offer from "+o.rname+"?")) {
+=======
+                      if (!confirm("Are you sure you want to delete the Reff: "+o.rname+"?")) {
+>>>>>>> Stashed changes
                           return;
                       }
                       
@@ -304,7 +323,197 @@ const reffGameApp = {
                     resetReffForm() {
                       this.selectedReff = null;
                       this.reffForm = {};
+<<<<<<< Updated upstream
                     }
+=======
+                    },
+                    fetchReffData() {
+            fetch('/api/reffs/')
+            .then( response => response.json() )
+            .then( (responseJson) => {
+                console.log(responseJson);
+                this.reffs = responseJson;
+            })
+            .catch( (err) => {
+                console.error(err);
+            })
+        },
+        // postReff(evt) {
+        //     if (this.selectedReff === null) {
+        //         this.postNewReff(evt);
+        //     } else {
+        //         this.postEditReff(evt);
+        //     }
+        //   },
+        // postNewReff(evt) {
+        //     //this.bookForm.id = this.selectedBook.id; //not sure about this
+        //     console.log("Posted!", this.reffForm); //test to make sure form works  //use cmd+shift+r to make sure
+        //     alert("Post");
+
+        //     fetch('api/reffs/create.php', {
+        //         method:'POST',
+        //         body: JSON.stringify(this.reffForm),
+        //         headers: {
+        //           "Content-Type": "application/json; charset=utf-8"
+        //         }
+        //       })
+        //       .then( response => response.json() )
+        //       .then( json => {
+        //         console.log("Returned from post:", json);
+        //         // TODO: test a result was returned!
+        //         this.reffs = json; //idk
+                
+        //         // reset the form
+        //         this.reffForm = {};
+        //       });
+
+            
+        //     },
+        //     postEditReff(evt) {
+        //         // this.offerForm.studentId = this.selectedStudent.id;
+        //         this.reffForm.id = this.selectedReff.id;       
+                
+        //         console.log("Updating!", this.reffForm);
+        
+        //         fetch('api/reffs/update.php', {
+        //             method:'POST',
+        //             body: JSON.stringify(this.reffForm),
+        //             headers: {
+        //               "Content-Type": "application/json; charset=utf-8"
+        //             }
+        //           })
+        //           .then( response => response.json() )
+        //           .then( json => {
+        //             console.log("Returned from post:", json);
+        //             // TODO: test a result was returned!
+        //             this.reffs = json;
+                    
+        //             this.resetReffForm();
+        //           });
+        //       },
+        //       postDeleteReff(o) {
+        //         if (!confirm("Are you sure you want to delete the offer from "+o.rname+"?")) {
+        //             return;
+        //         }
+                
+        //         fetch('api/reffs/delete.php', {
+        //             method:'POST',
+        //             body: JSON.stringify(o),
+        //             headers: {
+        //               "Content-Type": "application/json; charset=utf-8"
+        //             }
+        //           })
+        //           .then( response => response.json() )
+        //           .then( json => {
+        //             console.log("Returned from post:", json);
+        //             // TODO: test a result was returned!
+        //             this.reffs = json;
+                    
+        //             this.resetReffForm();
+        //           });
+        //       },
+        //       selectReff(o) {
+        //         this.selectedReff = o;
+        //         this.reffForm = Object.assign({}, this.selectedReff);
+        //       },
+        //       resetReffForm() {
+        //         this.selectedReff = null;
+        //         this.reffForm = {};
+        //       },
+              fetchTeamData() {
+                fetch('/api/teams/index.php')
+                .then( response => response.json() )
+                .then( (responseJson) => {
+                    console.log(responseJson);
+                    this.teams = responseJson;
+                })
+                .catch( (err) => {
+                    console.error(err);
+                })
+            },
+            postTeam(evt) {
+                if (this.selectedTeam === null) {
+                    this.postNewTeam(evt);
+                } else {
+                    this.postEditTeam(evt);
+                }
+              },
+            postNewTeam(evt) {
+                //this.bookForm.id = this.selectedBook.id; //not sure about this
+                console.log("Posted!", this.teamForm); //test to make sure form works  //use cmd+shift+r to make sure
+                alert("Post");
+    
+                fetch('api/teams/create.php', {
+                    method:'POST',
+                    body: JSON.stringify(this.teamForm),
+                    headers: {
+                      "Content-Type": "application/json; charset=utf-8"
+                    }
+                  })
+                  .then( response => response.json() )
+                  .then( json => {
+                    console.log("Returned from post:", json);
+                    // TODO: test a result was returned!
+                    this.teams = json; //idk
+                    
+                    // reset the form
+                    this.teamForm = {};
+                  });
+    
+                
+                },
+                postEditTeam(evt) {
+                    // this.offerForm.studentId = this.selectedStudent.id;
+                    this.teamForm.id = this.selectedTeam.id;       
+                    
+                    console.log("Updating!", this.teamForm);
+            
+                    fetch('api/teams/update.php', {
+                        method:'POST',
+                        body: JSON.stringify(this.teamForm),
+                        headers: {
+                          "Content-Type": "application/json; charset=utf-8"
+                        }
+                      })
+                      .then( response => response.json() )
+                      .then( json => {
+                        console.log("Returned from post:", json);
+                        // TODO: test a result was returned!
+                        this.teams = json;
+                        
+                        this.resetTeamForm();
+                      });
+                  },
+                  postDeleteTeam(o) {
+                    if (!confirm("Are you sure you want to delete the Team: "+o.Name+"?")) {
+                        return;
+                    }
+                    
+                    fetch('api/teams/delete.php', {
+                        method:'POST',
+                        body: JSON.stringify(o),
+                        headers: {
+                          "Content-Type": "application/json; charset=utf-8"
+                        }
+                      })
+                      .then( response => response.json() )
+                      .then( json => {
+                        console.log("Returned from post:", json);
+                        // TODO: test a result was returned!
+                        this.teams = json;
+                        
+                        this.resetTeamForm();
+                      });
+                  },
+                  selectTeam(o) {
+                    this.selectedTeam = o;
+                    this.teamForm = Object.assign({}, this.selectedTeam);
+                  },
+                  resetTeamForm() {
+                    this.selectedTeam = null;
+                    this.teamForm = {};
+                  }
+>>>>>>> Stashed changes
             
         
     },
@@ -312,6 +521,10 @@ const reffGameApp = {
       this.fetchReffData();
       this.fetchGameData();
       this.fetchGameAData();
+<<<<<<< Updated upstream
+=======
+      this.fetchTeamData();
+>>>>>>> Stashed changes
           
         }
   

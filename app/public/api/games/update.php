@@ -32,18 +32,22 @@ $db = DbConnection::getConnection();
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
     'UPDATE games SET
-      gfield = ?
+      gfield = ?,
       -- FIXXXX
-      -- gdate = ?,
-      -- gtime = ?
+      gdate = ?,
+      gtime = ?
+      -- hteam = ?,
+      -- ateam = ?
     WHERE id = ?'
   );
 
 $stmt->execute([
   $_POST['gfield'],
   // FIXXX
-  // $_POST['gdate'],
-  // $_POST['gtime'],
+  $_POST['gdate'],
+  $_POST['gtime'],
+  // $_POST['hteam'],
+  // $_POST['ateam'],
   $_POST['id']
 ]);
 

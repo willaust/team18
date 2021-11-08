@@ -31,15 +31,17 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO reffs (rname, age, score)
-  VALUES (?, ?, ?)'
+  'INSERT INTO reffs (rname, age, grade, score)
+  VALUES (?, ?, ?, ?)'
 );
 
 $stmt->execute([
   //$_POST['id'],
   $_POST['rname'],
-  $_POST['age'],
+  $_POST['age'], 
+  $_POST['grade'],
   $_POST['score'],
+ 
 
 ]);
 
