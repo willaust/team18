@@ -39,6 +39,11 @@
 
           </div>
         </div>
+        <div>
+          <form method="get" action="/index.html">
+            <button type="submit" class="btn btn-outline-secondary btn-sm" style="background-color: red;">Sign Out</button>
+          </form>
+        </div>
       </nav>
     <!-- END NAV BAR-->
     </header>
@@ -111,7 +116,7 @@
                     <label for="score" class="form-label">Referee Skill</label>
                     <input type="number" v-model="reffForm.score" class="form-control" id="score">
                 </div>
-                <button type="submit" class="btn btn-primary">{{ selectedReff === null ? "Add" : "Edit" }} Referree</button>
+                <button type="submit" class="btn btn-primary">{{ selectedReff === null ? "Add" : "Edit" }} Referee</button>
                 <button type="button" class="btn btn-outline-secondary" v-if="selectedReff" v-on:click="resetReffForm">Cancel</button>
             </form>
         </div>

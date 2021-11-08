@@ -24,20 +24,31 @@
 
 <body>
   <header>
+    <!-- NAV BAR-->
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="http://www.indianareferees.org/">Indiana Soccer Referees Association</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <!-- MAKE SURE TO USE CURRENT TAG FOR CURRENT PAGE ACROSS PAGES-->
+            <a class="nav-item nav-link active" href="/admin-game-list.html">Game List </a>
+            <a> | </a>
+            <a class="nav-item nav-link" href="/admin-ref-game.html">Game Assignment</a>
+            <a> | </a>
+            <a class="nav-item nav-link" href="/admin-referee-list.html">Referree List</a>
 
-  <h1>
-    <div class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">
-        Referee Information
-    </div>
-  </h1>
-
-
-    <nav class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">
-      <a href = "referee-list.html">Home    |</a>
-      <a href = "referee-details.html">Referee Details    |</a>
-      <a href = "game.html">Game details    |</a>
-    </nav>
-  </header>
+          </div>
+        </div>
+        <div>
+          <form method="get" action="/index.html">
+            <button type="submit" class="btn btn-outline-secondary btn-sm" style="background-color: red; color: black;">Sign Out</button>
+          </form>
+        </div>
+      </nav>
+    <!-- END NAV BAR-->
+    </header>
 
   <div id="reffGameApp" class="container">
     <div class="row align-items-start">
@@ -150,9 +161,7 @@
               <button type="submit" class="btn btn-primary">{{ selectedPer === null ? "Add " : "Edit " }} Information</button>
               <button type="button" class="btn btn-outline-secondary" v-if="selectedPer" v-on:click="resetPerForm">Cancel</button>
             </form> 
-            <div class="noOffers" v-if="">
-              <h3>No Information 😥</h3>
-            </div>
+           
       </div> 
   </div>
   <div>
