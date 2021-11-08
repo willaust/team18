@@ -14,11 +14,29 @@ const reffGameApp = {
         selectedReff: null,
         teams: [],
         teamForm: {},
-        selectedTeam: null
+        selectedTeam: null,
+        offers: [],
+        saveRef: [],
+        ofs: [],
+        per: [],
+        selectedPer: null,
+        perForm: {},
       }
     },
     computed: {},
     methods: {
+      fetchReportData() {
+        fetch('/api/report1/')
+        .then( response => response.json() )
+        .then( (responseJson) => {
+            console.log(responseJson);
+            this.offers = responseJson;
+        })
+        .catch( (error) => {
+            console.error(error);
+        });
+    },
+
       prettyData(d) {
         return dayjs(d)
         .format('D MMM YYYY')
@@ -301,10 +319,10 @@ const reffGameApp = {
                           this.resetReffForm();
                         });
                     },
-                    selectReff(o) {
-                      this.selectedReff = o;
-                      this.reffForm = Object.assign({}, this.selectedReff);
-                    },
+                    // selectReff(o) {
+                    //   this.selectedReff = o;
+                    //   this.reffForm = Object.assign({}, this.selectedReff);
+                    // },
                     resetReffForm() {
                       this.selectedReff = null;
                       this.reffForm = {};
@@ -494,7 +512,123 @@ const reffGameApp = {
                   resetTeamForm() {
                     this.selectedTeam = null;
                     this.teamForm = {};
+                  },
+                  selectReff(o) {
+                    // this.SaveRef.id = o;
+                    // this.reffForm = Object.assign({}, this.selectedReff);
+                    if (o == this.selectedReff) {
+                      return;
                   }
+                  this.selectedReff = o;
+                  this.ofs = [];
+                  console.log("Fetching reff for ", this.selectedReff);
+                  this.fetchPerData(this.selectedReff);
+                  },
+                  selectReff1(o) {
+                    this.selectedReff = o;
+                    this.reffForm = Object.assign({}, this.selectedReff);
+                  },
+                  fetchPerData(s) {
+                    console.log("Fetching reff data for ", s);
+                    fetch('/api/per/?ref=' + s.id)
+                    .then( response => response.json() )
+                    .then( (responseJson) => {
+                        console.log(responseJson);
+                        this.ofs = responseJson;
+                    })
+                    .catch( (err) => {
+                        console.error(err);
+                    })
+                    .catch( (error) => {
+                        console.error(error);
+                    });
+                },
+                selectPerToEdit(o) {
+                  this.selectedPer = o;
+                  this.perForm = Object.assign({}, this.selectedPer);
+              },
+              postDeletePer(o) {
+                if (!confirm("Are you sure you want to delete the person from "+o.fname+"?")) {
+                  return;
+                }
+                console.log("Delete!", o);
+        
+                fetch('api/per/delete.php', {
+                    method:'POST',
+                    body: JSON.stringify(o),
+                    headers: {
+                      "Content-Type": "application/json; charset=utf-8"
+                    }
+                  })
+                  .then( response => response.json() )
+                  .then( json => {
+                    console.log("Returned from post:", json);
+                    // TODO: test a result was returned!
+                    this.ofs = json;
+        
+                    // reset the form
+                    this.resetPerForm();
+                  });
+              },
+              resetPerForm() {
+                this.selectedPer = null;
+                this.perForm = {};
+            },
+            postPer(evt) {
+              if (this.selectedPer === null) {
+                  this.postNewPer(evt);
+              } else {
+                  this.postEditPer(evt);
+              }
+            },
+            postNewPer(evt) {
+              this.perForm.refId = this.selectedReff.id;
+      
+              console.log("Creating!", this.perForm);
+      
+              fetch('api/per/create.php', {
+                  method:'POST',
+                  body: JSON.stringify(this.perForm),
+                  headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                  }
+                })
+                .then( response => response.json() )
+                .then( json => {
+                  console.log("Returned from post:", json);
+                  // TODO: test a result was returned!
+                  this.ofs = json;
+      
+                  // reset the form
+                  this.resetPerForm();
+                })
+                .catch( err => {
+                  alert("Something went horribly wrong!");
+                });
+            },
+            postEditPer(evt) {
+              this.perForm.refId = this.selectedReff.id;
+              this.perForm.id = this.selectedPer.id;
+      
+              console.log("Updating!", this.perForm);
+      
+              fetch('api/per/update.php', {
+                  method:'POST',
+                  body: JSON.stringify(this.perForm),
+                  headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                  }
+                })
+                .then( response => response.json() )
+                .then( json => {
+                  console.log("Returned from post:", json);
+                  // TODO: test a result was returned!
+                  this.ofs = json;
+      
+                  // reset the form
+                  this.resetPerForm();
+                });
+            }
             
         
     },
@@ -503,6 +637,7 @@ const reffGameApp = {
       this.fetchGameData();
       this.fetchGameAData();
       this.fetchTeamData();
+      this.fetchReportData();
           
         }
   

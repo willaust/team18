@@ -9,7 +9,7 @@
 <head>
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Introduction</title>
+    <title>Game List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -26,7 +26,7 @@
   <header>
 
     <h1>
-      <div class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">Referee List
+      <div class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">Game List
       </div>
     </h1>
 
@@ -46,22 +46,24 @@
         <table id = "new_table" class = "table table-bordered table-striped table-hover table-condensed">
             <thead>
               <tr class="change2">
+                <th class = "text-center"> Game Name </th>
                 <th class = "text-center"> Field </th>
                 <th class = "text-center"> Date </th>
                 <th class = "text-center"> Time </th>
-                <!-- <th class = "text-center"> Home Team</th>
-                <th class = "text-center"> Away Team</th> -->
+                <th class = "text-center"> Home Team</th>
+                <th class = "text-center"> Away Team</th>
                 <th class = "text-center"> EDIT/DELETE </th>
               </tr>
             </thead>
             <br>
             <tbody>
               <tr v-for="game in games">
+                <td>{{ game.gname }}</td>
                 <td>{{ game.gfield }}</td>
                 <td>{{ prettyData(game.gdate) }}</td>
                 <td>{{ game.gtime }}</td>
-                <!-- <td>{{ game.hteam }}</td>
-                <td>{{ game.ateam }}</td> -->
+                <td> <a href= "teams.html">{{ game.hteam }}</a></td>
+                <td><a href= "teams.html">{{ game.ateam }}</a></td>
               <td>
                 <button type="button" class="btn btn-outline-secondary btn-sm"
                   v-on:click="selectGame(game)">Edit</button>
@@ -79,6 +81,10 @@
         <h3>{{ selectedGame === null ? "Add" : "Edit" }} Game</h3> 
         <div class="col col-8">
             <form v-on:submit.prevent="postGame" >
+              <div class="mb-3">
+                <label for="gname" class="form-label">Game Name</label>
+                <input type="text" v-model="gameForm.gname"
+                class="form-control" id="gname">
                 <div class="mb-3">
                     <label for="gfield" class="form-label">Field</label>
                     <input type="text" v-model="gameForm.gfield"
@@ -96,20 +102,20 @@
                     <input type="text" v-model="gameForm.gtime"
                     class="form-control" id="gtime"> 
                 </div>
-                <!-- <div class="mb-3">
+                <div class="mb-3">
                   <label for="hteam" class="form-label">Home Team</label>
                   <select  class="form-select" v-model="gameForm.hteam" id="hteam"  >
-                    <option value= ' '> N/A</option>
-                    <option v-for="team in teams":value='gameForm.hteam' >{{ team.tName }}</option>
+                    <option value= ' ' selected> N/A</option>
+                    <option v-for="team in teams":value='team.tName' >{{ team.tName }}</option>
                   </select> 
               </div>
               <div class="mb-3">
                 <label for="ateam" class="form-label">Away Team</label>
                 <select  class="form-select" v-model="gameForm.ateam" id="ateam"  >
-                  <option selected ></option>
-                  <option v-for="team in teams":value='gameForm.ateam' >{{ team.tName }}</option>
-                </select>  -->
-            <!-- </div> -->
+                  <option value= ' ' selected>N/A</option>
+                  <option v-for="team in teams":value='team.tName' >{{ team.tName }}</option>
+                </select> 
+            </div>
                 <button type="submit" class="btn btn-primary">{{ selectedGame === null ? "Add" : "Edit" }} Game</button>
                 <button type="button" class="btn btn-outline-secondary" v-if="selectedGame" v-on:click="resetGameForm">Cancel</button>
             </form>

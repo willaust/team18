@@ -5,16 +5,14 @@ require 'class/DbConnection.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT 
-    ref, 
-    gameId, 
-    -- MAX(salary) AS maxSalary, 
-    COUNT(gameId) AS DateCount
-FROM gameAssign LEFT OUTER JOIN games ON gameAssign.gameId = games.id
--- FROM gameAssign RIGHT OUTER JOIN reffs ON gameAssign.ref = reffs.rname
--- WHERE edate > CURRENT_DATE AND sdate < CURRENT_DATE
-GROUP BY ref, gameId
-ORDER BY ref';
+$sql = 'SELECT gameId, 
+    -- games.gdate, 
+    COUNT(gameAssign.stat) AS unas 
+    FROM gameAssign LEFT JOIN games ON gameAssign.gameId = games.id 
+    WHERE gameAssign.stat = "Unassigned"
+    --  AND games.gdate < CURRENT_DATE
+    GROUP BY gameId';
+// GROUP BY games.gname
 
 $vars = [];
 
@@ -27,13 +25,13 @@ $offers = $stmt->fetchAll();
 if (isset($_GET['format']) && $_GET['format']=='csv') {
     header('Content-Type: text/csv');
 
-    echo "Referee-Username,Game,DateCount\r\n";
+    echo "Game Name,Game Date,Unassigned Count\r\n";
 
     foreach($offers as $o) {
-        echo "\"".$o['ref'] ."\","
-            .$o['gameId'] .','
+        echo "\"".$o['gameId'] ."\","
+            // .$o['games.gdate'] .','
             // .$o['maxSalary'] .','
-            .$o['DateCount'] ."\r\n";
+            .$o['unas'] ."\r\n";
     }
 } else {
 // Step 3: Convert to JSON

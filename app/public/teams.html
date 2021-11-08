@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Referee List</title>
+    <title>Introduction</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -24,7 +24,7 @@
   <header>
 
     <h1>
-      <div class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">Referee List
+      <div class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">Team List
       </div>
     </h1>
 
@@ -44,25 +44,25 @@
       <table id = "new_table" class = "table table-bordered table-striped table-hover table-condensed">
           <thead>
             <tr class="change2">
-              <th class = "text-center"> Name </th>
-              <th class = "text-center"> Age </th>
-              <th class = "text-center"> Referee Grade </th>
-              <th class = "text-center"> Referee Skill </th>
+              <th class = "text-center"> Team Name </th>
+              <th class = "text-center"> Coach Name </th>
+              <th class = "text-center"> Athletic Director </th>
+              <th class = "text-center"> City </th>
               <th class = "text-center"> EDIT/DELETE </th>
             </tr>
           </thead>
           <br>
           <tbody>
-            <tr v-for="reff in reffs">
-              <td> <a href= "referee-info.html">{{ reff.rname }}</a></td>
-              <td>{{ reff.age }}</td>
-              <td>{{ reff.grade }}</td>
-              <td>{{ reff.score }}</td>
+            <tr v-for="t in teams">
+              <td> {{ t.tName }}</a></td>
+              <td>{{ t.coachName}}</td>
+              <td>{{ t.aDirector }}</td>
+              <td>{{ t.city }}</td>
               <td>
                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                  v-on:click="selectReff1(reff)">Edit</button>
+                  v-on:click="selectTeam(t)">Edit</button>
                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                  v-on:click="postDeleteReff(reff)">Delete</button>
+                  v-on:click="postDeleteTeam(t)">Delete</button>
               </td>
             </tr>
           </tbody>
@@ -71,46 +71,36 @@
 <!-- Something cute about entering in info -->
 
         <!-- FORM TO ENTER INFO -->
-        <h3>{{ selectedReff === null ? "Add" : "Edit" }} Referee</h3> 
+        <h3>{{ selectedReff === null ? "Add" : "Edit" }} Team</h3> 
         <div class="col col-8">
-            <form v-on:submit.prevent="postReff">
+            <form v-on:submit.prevent="postTeam">
                 <div class="mb-3">
-                    <label for="title" class="form-label">Name</label>
-                    <input type="text" v-model="reffForm.rname"
-                    class="form-control" id="rname"> 
+                    <label for="title" class="form-label">Team Name:</label>
+                    <input type="text" v-model="teamForm.tName"
+                    class="form-control" id="tName"> 
                 </div>
                 <div class="mb-3">
-                    <label for="author" class="form-label">Age</label>
-                    <input type="number" v-model="reffForm.age" class="form-control" id="age">
+                    <label for="author" class="form-label">Coach Name:</label>
+                    <input type="text" v-model="teamForm.coachName" class="form-control" id="coachName">
                 </div>
                 <div class="mb-3">
-                  <label for="grade" class="form-label">Referee Grade</label>
-                  <select v-model="reffForm.grade" class="form-select" id="grade" required="required">
-                      <option value="A+">A+</option>
-                      <option value="A">A</option>
-                      <option value="A-">A-</option>
-                      <option value="B+">B+</option>
-                      <option value="B">B</option>
-                      <option value="B-">B-</option>
-                      <option value="C+">C+</option>
-                      <option value="C">C</option>
-                      <option value="C-">C-</option>
-                      <option value="D+">D+</option>
-                      <option value="D">D</option>
-                      <option value="D-">D-</option>
-                      <option value="F">F</option>
-                    </select> 
-              </div>
-                <div class="mb-3">
-                    <label for="score" class="form-label">Referee Skill</label>
-                    <input type="number" v-model="reffForm.score" class="form-control" id="score">
+                    <label for="author" class="form-label">Athletic Director:</label>
+                    <input type="text" v-model="teamForm.aDirector" class="form-control" id="aDirector">
                 </div>
-                <button type="submit" class="btn btn-primary">{{ selectedReff === null ? "Add" : "Edit" }} Referree</button>
-                <button type="button" class="btn btn-outline-secondary" v-if="selectedReff" v-on:click="resetReffForm">Cancel</button>
+                <div class="mb-3">
+                    <label for="score" class="form-label">City:</label>
+                    <input type="text" v-model="teamForm.city" class="form-control" id="city">
+                </div>
+                <button type="submit" class="btn btn-primary">{{ selectedTeam === null ? "Add" : "Edit" }} Team</button>
+                <button type="button" class="btn btn-outline-secondary" v-if="selectedTeam" v-on:click="resetTeamForm">Cancel</button>
             </form>
         </div>
     </div>
-    <button type="button" class="btn btn-lg btn-primary" style="background-color: #e6baba; color: Black; margin: 10px;" >Refresh</button>
+    <div>
+        <form method="get" action="/admin-game-list.html">
+          <button type="submit" class="btn btn-outline-secondary btn-sm">Go Back</button>
+        </form>
+      </div>
   </main>
 
 <footer class = "rows" style="background-color: #e6baba">

@@ -43,22 +43,27 @@
       <table id = "new_table" class = "table table-bordered table-striped table-hover table-condensed">
           <thead>
             <tr class="change2">
+              <th class = "text-center"> Game Name </th>
               <th class = "text-center"> Field </th>
               <th class = "text-center"> Date </th>
               <th class = "text-center"> Time </th>
+              <th class = "text-center"> Home Team </th>
+              <th class = "text-center"> Away Team </th>
             </tr>
           </thead>
           <br>
           <tbody>
             <tr v-for="game in games">
+              <td>{{ game.gname }}</td>
               <td>{{ game.gfield }}</td>
               <td>{{ prettyData(game.gdate) }}</td>
               <td>{{ game.gtime }}</td>
+              <td>{{ game.hteam }}</td>
+              <td>{{ game.ateam }}</td>
             </tr>
           </tbody>
       </table>  
     </div>
-    <button type="button" class="btn btn-lg btn-primary" style="background-color: #e6baba; color: Black; margin: 10px;" >Refresh</button>
   </main>
 
 <footer class = "rows" style="background-color: #e6baba">

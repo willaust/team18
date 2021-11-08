@@ -48,7 +48,11 @@
           <br>
           <tbody>
             <tr v-for="reff in reffs">
+              <!-- <div  v-on:click="saveReff(reff.id)"
+             :class="['reff', {selected: saveReff && reff.id == SaveReff.id}]">
               <td><a href= "referee-info.html">{{ reff.rname }}</a></td>
+            </div> -->
+            <td>{{ reff.rname }}</a></td>
               <td>{{ reff.age }}</td>
               <td>{{ reff.grade }}</td>
             </tr>

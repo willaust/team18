@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Introduction</title>
+    <title>Assignment List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -83,7 +83,7 @@
                 <div class="mb-3">
                     <label for="gameId" class="form-label">Game</label>
                     <select  class="form-select" v-model="gameAForm.gameId" id="gameId" required="required" >
-                      <option v-for="game in games":value='game.gfield' >{{ game.gfield }} - {{ prettyData(game.gdate) }} - {{game.gtime}}</option>
+                      <option v-for="game in games":value='game.gname' >{{ game.gname }} </option>
                     </select> 
                 </div>
                 <div class="mb-3">
@@ -96,7 +96,8 @@
               </div>  
               <div   class="mb-3" >
                 <label for="ref" class="form-label">Referee 1</label>
-                    <select class="form-select" v-model="gameAForm.ref" id="ref" required="required"> 
+                    <select class="form-select" v-model="gameAForm.ref" id="ref" required="required">
+                      <option> N/A </option>
                       <option v-for="r in reffs":value='r.rname' >{{ r.rname }}</option>
                     </select>
             </div>

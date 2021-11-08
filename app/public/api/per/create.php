@@ -32,20 +32,26 @@ $db = DbConnection::getConnection();
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
   // FIXXXX - add teams?
-  'INSERT INTO games (gname, gfield, gdate, gtime, hteam, ateam)  
-  VALUES (?, ?, ?, ?, ?, ?)' 
+  'INSERT INTO per (refId, fname, lname, gen, countp, addr, bday, age, ph, em)  
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)' 
 );
 
 // ,glevel,ref1,stat1,ref2,stat2,ref3,stat3,ref4,stat4
 
 $stmt->execute([
   //$_POST['id'],
-  $_POST['gname'],
-  $_POST['gfield'],
-  $_POST['gdate'],
-  $_POST['gtime'],
-  $_POST['hteam'],
-  $_POST['ateam'],
+  $_POST['refId'],
+  $_POST['fname'],
+  $_POST['lname'],
+  $_POST['gen'],
+  $_POST['countp'],
+  $_POST['addr'],
+  $_POST['bday'],
+  $_POST['age'],
+  $_POST['ph'],
+  $_POST['em'],
+  // $_POST['hteam'],
+  // $_POST['ateam'],
   // $_POST['glevel'],
   // $_POST['ref1'],
   // $_POST['stat1'],
@@ -69,4 +75,4 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../games/');
+header('Location: ../per/?ref=' . $_POST['refId']);

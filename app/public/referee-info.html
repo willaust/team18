@@ -11,7 +11,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Referee information</title>
+  <title>Referee Information</title>
   
 
   <link href="css/style.css" rel="stylesheet" type="text/css" />
@@ -27,7 +27,7 @@
 
   <h1>
     <div class = "col-lg-12 col-md-6 col-sm-7 col-xs-7">
-        Referee information
+        Referee Information
     </div>
   </h1>
 
@@ -39,47 +39,132 @@
     </nav>
   </header>
 
-  <!-- Random info using JS. -->
-  <div id="app" >
-    <div id="about" class="container padding-32" >
-      <h3 class="-border-bottom border-light-grey padding-16">  Referee Information</h3>
-      <div class = "head">
-        <img v-bind:src="results.picture.large">
+  <div id="reffGameApp" class="container">
+    <div class="row align-items-start">
+      <div class="col col-4" >
+        <h1> Select a referee to view/add/edit/delete information.</h1>
+        <div v-for="r in reffs" v-on:click="selectReff(r)"
+             :class="['ref', {selected: selectedReff && r.id == selectedReff.rname}]">
+              <span class="rname">{{ r.rname }}</span><br>
+              <!-- <span class="studentName">{{ s.name }}</span> -->
+            </div>
+        <!-- <p>Profile information for {{ person.name.first }}</p> -->
+         <!-- <select class="rid" v-for="r in reffs" id="rid">
+          <option value="r.id">{{ r.rname }}</option> -->
+
+          <!-- <select >
+              <option v-for="r in reffs"   v-on:click="selectReff(id)":class="['reffs', {selected: selectedReff && r.rname == selectedReff.rname}]" value="r.id">{{ r.rname }}</option> -->
+              <!-- <span class="studentName">{{ s.name }}</span> -->
+         <!-- </select> -->
+        
+          <!-- <option class = 'rname' v-on:click="selectReff(r)"
+          :class="['reffs', {selected: selectedReff && r.rname == selectedReff.rname}]" value="r.id">{{ r.rname }}</option> -->
+        <!-- </select> -->
+          <!-- <span class="studentName">{{ s.name }}</span> -->
+        </div>
       </div>
-    </div>
-    
-    <ul>
-      <li>
-        <h1>Name: {{ results.name.first }} {{ results.name.last }} </h1>
-      </li>
-      <li>
-        <h1>Gender: {{ results.gender }}  </h1>
-      </li>
-      <li>
-        <h1>Country: {{ results.location.country }}</h1>
-      </li>
-      <li>
-        <h1>Address: {{ results.location.street.number }}  {{ results.location.city }} , {{ results.location.state }} , {{ results.location.postcode }} </a></h1>
-      </li>
-      <li>
-        <h1>Birthday: {{ bday }}</h1>
-      </li>
-      <li>
-        <h1>Age: {{ results.dob.age }}</h1>
-      </li>
-      <li>
-        <h1>Phone: {{ results.phone }}</a></h1>
-      </li>
-      <li>
-        <h1>Email: <a v-bind:href="'mailto:'+results.email">{{ results.email }}</a></h1>
-      </li>
-    </ul>
-     
-    <div class="col l3 m6 margin-bottom">
-      <p><a class="button" v-bind:href="'mailto:'+results.email">Contact</a></p>
-    </div>
+
+      <div class="col col-8" v-if="selectedReff">
+        <h1>Info for {{ selectedReff.rname }}</h1>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th>First/Last Name</th>
+              <th>Gender</th>
+              <th>Country</th>
+              <th>Address</th>
+              <th>Birthday</th>
+              <th>Age</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th></th>
+            </tr>
+          </thead>
+            <tbody>
+                <tr v-for="p in ofs">
+                    <td>{{ p.fname }} {{p.lname }}</td>
+                    <td>{{ p.gen }}</td>
+                    <td>{{ p.countp }}</td>
+                    <td>{{ p.addr }}</td>
+                    <td>{{ prettyData(p.bday) }}</td>
+                    <td>{{ p.age }}</td>
+                    <td>{{ p.ph }}</td>
+                    <td><a v-bind:href="'mailto:'+ p.em">{{ p.em }}</a></td>
+                    <td>
+                      <button type="button" 
+                        class="btn btn-outline-secondary btn-sm"
+                        v-on:click="selectPerToEdit(p)">Edit</button>
+                      <button type="button" class="btn btn-outline-secondary btn-sm"
+                        v-on:click="postDeletePer(p)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+         <h3>{{ selectedPer === null ? "Add " : "Edit " }} Information</h3>
+            <form v-on:submit.prevent="postPer">
+              <div class="mb-3">
+                <label for="fname" class="form-label">First Name: </label>
+                <input type="text" v-model="perForm.fname"
+                 class="form-control" id="fname" >
+              </div>
+              <div class="mb-3">
+                <label for="lname" class="form-label">Last Name: </label>
+                <input type="text" v-model="perForm.lname"
+                 class="form-control" id="lname" >
+              </div>
+              <div class="mb-3">
+                <label for="gen" class="form-label">Gender: </label>
+                <input type="text" v-model="perForm.gen"
+                 class="form-control" id="gen" >
+              </div>
+              <div class="mb-3">
+                <label for="countp" class="form-label">Country: </label>
+                <input type="text" v-model="perForm.countp"
+                 class="form-control" id="countp" >
+              </div>
+              <div class="mb-3">
+                <label for="addr" class="form-label">Address: </label>
+                <input type="text" v-model="perForm.addr"
+                 class="form-control" id="addr" >
+              </div>
+              <div class="mb-3">
+                <label for="pday" class="form-label">Birth Date: </label>
+                <input type="date" v-model="perForm.bday" class="form-control" id="bday">
+              </div>
+              <div class="mb-3">
+                <label for="age" class="form-label">Age: </label>
+                <input type="text" v-model="perForm.age"
+                 class="form-control" id="age" >
+              </div>
+              <div class="mb-3">
+                <label for="ph" class="form-label">Phone Number: </label>
+                <input type="text" v-model="perForm.ph"
+                 class="form-control" id="ph" >
+              </div>
+              <div class="mb-3">
+                <label for="em" class="form-label">Email: </label>
+                <input type="text" v-model="perForm.em"
+                 class="form-control" id="em" >
+              </div> 
+              <button type="submit" class="btn btn-primary">{{ selectedPer === null ? "Add " : "Edit " }} Information</button>
+              <button type="button" class="btn btn-outline-secondary" v-if="selectedPer" v-on:click="resetPerForm">Cancel</button>
+            </form> 
+            <div class="noOffers" v-if="">
+              <h3>No Information 😥</h3>
+            </div>
+      </div> 
   </div>
-<script src="js/rand.js"></script>
+  <div>
+    <form method="get" action="/admin-referee-list.html">
+      <button type="submit" class="btn btn-outline-secondary btn-sm">Go Back</button>
+    </form>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+<script src="js/ref-games.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </main>
 

@@ -123,3 +123,10 @@ span.psw {
   cursor:pointer;
   white-space:nowrap
 }
+
+.ref {
+  margin: 10px 2px;
+  padding: 4px;
+  border: 1px solid gray;
+  background-color: antiquewhite;
+}

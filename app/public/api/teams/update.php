@@ -32,7 +32,7 @@ $db = DbConnection::getConnection();
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
     'UPDATE teams SET
-      Name = ?,
+      tName = ?,
       coachName = ?,
       aDirector = ?,
       city =?
@@ -40,7 +40,7 @@ $stmt = $db->prepare(
   );
 
 $stmt->execute([ 
-  $_POST['Name'], 
+  $_POST['tName'], 
   $_POST['coachName'],
   $_POST['aDirector'],
   $_POST['city'],
