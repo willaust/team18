@@ -41,7 +41,7 @@
         </div>
         <div>
         <form method="get" action="/index.html">
-          <button type="submit" class="btn btn-outline-secondary btn-sm" style="background-color: red;">Sign Out</button>
+          <button type="submit" class="btn btn-outline-secondary" style="background-color: red;">Sign Out</button>
         </form>
       </div>
       </nav>
@@ -72,9 +72,9 @@
               <td>{{ t.city }}</td>
               <td>
                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                  v-on:click="selectTeam(t)">Edit</button>
+                  v-on:click="selectTeam(t)" style="background-color: blue; color: white;">Edit</button>
                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                  v-on:click="postDeleteTeam(t)">Delete</button>
+                  v-on:click="postDeleteTeam(t)" style="background-color: red; color: black;">Delete</button>
               </td>
             </tr>
           </tbody>

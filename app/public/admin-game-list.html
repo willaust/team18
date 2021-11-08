@@ -43,7 +43,7 @@
         </div>
         <div>
           <form method="get" action="/index.html">
-            <button type="submit" class="btn btn-outline-secondary btn-sm" style="background-color: red;">Sign Out</button>
+            <button type="submit" class="btn btn-outline-secondary" style="background-color: red;">Sign Out</button>
           </form>
         </div>
       </nav>
@@ -77,9 +77,9 @@
                 <td><a href= "teams.html">{{ game.ateam }}</a></td>
               <td>
                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                  v-on:click="selectGame(game)">Edit</button>
+                  v-on:click="selectGame(game)" style="background-color: blue; color: white;">Edit</button>
                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                  v-on:click="postDeleteGame(game)">Delete</button>
+                  v-on:click="postDeleteGame(game)" style="background-color: red; color: black;">Delete</button>
               </td>
               </tr>
             </tbody>

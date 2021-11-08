@@ -43,7 +43,7 @@
         </div>
         <div>
           <form method="get" action="/index.html">
-            <button type="submit" class="btn btn-outline-secondary btn-sm" style="background-color: red; color: black;">Sign Out</button>
+            <button type="submit" class="btn btn-outline-secondary" style="background-color: red; color: black;">Sign Out</button>
           </form>
         </div>
       </nav>
@@ -105,9 +105,9 @@
                     <td>
                       <button type="button" 
                         class="btn btn-outline-secondary btn-sm"
-                        v-on:click="selectPerToEdit(p)">Edit</button>
+                        v-on:click="selectPerToEdit(p)" style="background-color: blue; color: white;">Edit</button>
                       <button type="button" class="btn btn-outline-secondary btn-sm"
-                        v-on:click="postDeletePer(p)">Delete</button>
+                        v-on:click="postDeletePer(p)" style="background-color: red; color: black;">Delete</button>
                     </td>
                 </tr>
             </tbody>

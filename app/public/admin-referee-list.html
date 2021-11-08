@@ -41,7 +41,7 @@
         </div>
         <div>
           <form method="get" action="/index.html">
-            <button type="submit" class="btn btn-outline-secondary btn-sm" style="background-color: red;">Sign Out</button>
+            <button type="submit" class="btn btn-outline-secondary" style="background-color: red;">Sign Out</button>
           </form>
         </div>
       </nav>
@@ -71,9 +71,9 @@
               <td>{{ reff.score }}</td>
               <td>
                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                  v-on:click="selectReff1(reff)">Edit</button>
+                  v-on:click="selectReff1(reff)" style="background-color: blue; color: white;">Edit</button>
                 <button type="button" class="btn btn-outline-secondary btn-sm"
-                  v-on:click="postDeleteReff(reff)">Delete</button>
+                  v-on:click="postDeleteReff(reff)"style="background-color: red; color: black;">Delete</button>
               </td>
             </tr>
           </tbody>
