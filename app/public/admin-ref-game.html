@@ -116,18 +116,15 @@
             
             <button type="submit" class="btn btn-primary">{{ selectedGameA === null ? "Add" : "Edit" }} Game Assignment</button>
             <button type="button" class="btn btn-outline-secondary" v-if="selectedGameA" v-on:click="resetGameAForm">Cancel</button>
+      </div>     
+      <h3>Check reports below.</h3>
+      <div class="col col-8 container">
+          <a class="nav-item nav-link" href="/g-un-report.html">Referee's Unassigned Report</a>
+        
       </div>
       <div class="col col-8 container">
-        <h3>Check reports below.</h3>
-        <form method="get" action="/g-un-report.html">
-          <button type="submit" class="btn btn-outline-secondary" style="background-color: blue; color: white;">Referee's Unassigned Report</button>
-        </form>
+          <a class="nav-item nav-link" href="/ref-date-report.html">Referee's Assignment by Date</a>
       </div>
-        <div class="col col-8 container">
-          <form method="get" action="/ref-date-report.html">
-          <button type="submit" class="btn btn-outline-secondary" style="background-color: blue; color: white;">Referee's Assignment by Date</button>
-        </form>
-        </div>
         
       
       </div>

@@ -6,11 +6,12 @@ $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
 $sql = 'SELECT 
-    ref, 
+    ref,
     gameId, 
     -- MAX(salary) AS maxSalary, 
     COUNT(gameId) AS DateCount
 FROM gameAssign LEFT OUTER JOIN games ON gameAssign.gameId = games.id
+-- WHERE gdate = ??
 -- FROM gameAssign RIGHT OUTER JOIN reffs ON gameAssign.ref = reffs.rname
 -- WHERE edate > CURRENT_DATE AND sdate < CURRENT_DATE
 GROUP BY ref

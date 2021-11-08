@@ -5,10 +5,11 @@ require 'class/DbConnection.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT gameId, 
+$sql = 'SELECT 
+    gameId, 
     -- games.gdate, 
     COUNT(gameAssign.stat) AS unas 
-    FROM gameAssign LEFT JOIN games ON gameAssign.gameId = games.id 
+    FROM gameAssign LEFT OUTER JOIN games ON gameAssign.gameId = games.id 
     WHERE gameAssign.stat = "Unassigned"
     --  AND games.gdate < CURRENT_DATE
     GROUP BY gameId';
